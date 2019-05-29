@@ -4,8 +4,8 @@ require_once "SpecialLibrary.php";
 
 function addStuff($inputString) {
     $modifiedInput = $inputString . " x5";
-    $libraryOutput = prefix($modifiedInput);
-    $modifiedOutput = $modifiedInput . " mod\n";
+    $libraryOutput = SpecialLibrary::doublePrefix($modifiedInput);
+    $modifiedOutput = $libraryOutput . " mod\n";
 
     return $modifiedOutput;
 }

@@ -13,19 +13,21 @@ final class SpecialLibraryTest extends \PHPUnit\Framework\TestCase
         $testInput = "foo";
         $targetOutput = "prefix foo";
 
-        $testOutput = prefix($testInput);
+        $testOutput = SpecialLibrary::prefix($testInput);
         $this->assertEquals($testOutput, $targetOutput);
     }
 
     public function testDoublePrefix(): void
     {
         $testInput = "foo";
-        
-        $stubOutput = "bar";
-        $stubPrefix = Phony::stub("prefix")->returns($stubOutput);
+        $mockOutput = "bar";
 
-        $testOutput = doublePrefix($testInput);
-        $this->assertEquals($testOutput, $stubOutput);
+        $mockSpecialLibrary = Phony::mock(SpecialLibrary::class);
+        $staticSpecialLibrary = Phony::onStatic($mockSpecialLibrary);
+        $staticSpecialLibrary->doublePrefix->returns($mockOutput);
+        
+        $testOutput = SpecialLibrary::doublePrefix($testInput);
+        $this->assertEquals($testOutput, $mockOutput);
 
     }
 
