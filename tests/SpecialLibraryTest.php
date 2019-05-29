@@ -17,6 +17,12 @@ final class SpecialLibraryTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($testOutput, $targetOutput);
     }
 
+    /**
+     * As I understand the Phony documentation, this function is supposed to
+     * create a mock of SpecialLibrary, and calls to that mock will not call
+     * the original SpecialLibrary.  In practice, it calls the original
+     * SpecialLibrary.  It's not clear how this is supposed to work.
+     */
     public function testDoublePrefix(): void
     {
         $testInput = "foo";
