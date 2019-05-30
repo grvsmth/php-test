@@ -30,7 +30,7 @@ final class SpecialLibraryTest extends \PHPUnit\Framework\TestCase
 
         $mockSpecialLibrary = Phony::mock(SpecialLibrary::class);
         $staticSpecialLibrary = Phony::onStatic($mockSpecialLibrary);
-        $staticSpecialLibrary->doublePrefix->returns($mockOutput);
+        $staticSpecialLibrary->prefix->returns($mockOutput);
         
         $testOutput = SpecialLibrary::doublePrefix($testInput);
         $this->assertEquals($testOutput, $mockOutput);
