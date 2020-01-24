@@ -2,14 +2,10 @@
 
 require_once "SpecialLibrary.php";
 
-function addStuff($inputString) {
-    $modifiedInput = $inputString . " x5";
-    $libraryOutput = SpecialLibrary::doublePrefix($modifiedInput);
-    $modifiedOutput = $libraryOutput . " mod\n";
+$generateString = function() {
+    return "the right string";
+};
 
-    return $modifiedOutput;
-}
-
-print(addStuff($argv[1]));
+print(SpecialLibrary::caller($generateString));
 
 ?>

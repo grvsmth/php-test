@@ -3,17 +3,14 @@
 class SpecialLibrary
 {
 
-    public static function prefix($inputString) {
-        return "prefix " . $inputString;
+    public static function caller($inputFunction) {
+        $outputString = $inputFunction();
+        if ($outputString == "the right string") {
+            return "Success!\n";
+        }
+        return "Failure";
     }
 
-    public static function doublePrefix($inputString) {
-        $outputString = $inputString;
-        for ($i = 0; $i < 2; $i++) {
-            $outputString = static::prefix($outputString);
-        }
-        return $outputString;
-    }
 }
 
 ?>
