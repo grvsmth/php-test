@@ -6,9 +6,19 @@ class SpecialLibrary
     public static function caller($inputFunction) {
         $outputString = $inputFunction();
         if ($outputString == "the right string") {
-            return "Success!\n";
+            return "Caller success!\n";
         }
-        return "Failure";
+        return "Caller failure.\n";
+    }
+
+    public static function instantiator($inputClass) {
+        $myObject = new $inputClass();
+
+        $outputString = $myObject->getString();
+        if ($outputString == "the right string") {
+            return "Instantiator success!\n";
+        }
+        return "Instantiator failure.\n";
     }
 
 }

@@ -2,10 +2,17 @@
 
 require_once "SpecialLibrary.php";
 
-$generateString = function() {
+$produceString = function() {
     return "the right string";
 };
 
-print(SpecialLibrary::caller($generateString));
+class StringProducer {
+    public function getString() {
+        return "the right string";
+    }
+}
+
+print(SpecialLibrary::caller($produceString));
+print(SpecialLibrary::instantiator(StringProducer::class));
 
 ?>
