@@ -11,15 +11,13 @@ class SpecialLibrary
         return "Caller failure.\n";
     }
 
-    public static function instantiator($inputClass) {
-        $myObject = new $inputClass();
-        print_r($myObject);
-        $outputString = $myObject->getString();
-        print("\$outputString = $outputString\n");
+    public static function methodCaller($inputObject) {
+        $outputString = $inputObject->getString();
+
         if ($outputString == "the right string") {
-            return "Instantiator success!\n";
+            return "MethodCaller success!\n";
         }
-        return "Instantiator failure.\n";
+        return "MethodCaller failure.\n";
     }
 
 }

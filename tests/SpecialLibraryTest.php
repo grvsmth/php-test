@@ -26,20 +26,22 @@ final class SpecialLibraryTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($targetOutput, $testOutput);
     }
 
-    public function testInstantiatorRightString(): void
+    public function testMethodCallerRightString(): void
     {
         $testInput = Phony::partialMock([
             "id" => "testInput right string",
-            "getString" => Phony::stub()->returns("the right string")
+            "getString" => function() {
+                return "the right string";
+            }
         ]);
 
-        $targetOutput = "Instantiator success!\n";
+        $targetOutput = "MethodCaller success!\n";
 
-        $testOutput = SpecialLibrary::instantiator($testInput->get());
+        $testOutput = SpecialLibrary::methodCaller($testInput->get());
         $this->assertEquals($targetOutput, $testOutput);
     }
 
-    public function testInstantiatorWrongString(): void
+    public function testMethodCallerWrongString(): void
     {
         $mock_getString = Phony::stub()->returns("the wrong string");
         $testInput = Phony::partialMock([
@@ -47,9 +49,9 @@ final class SpecialLibraryTest extends \PHPUnit\Framework\TestCase
             "getString" => $mock_getString
         ]);
 
-        $targetOutput = "Instantiator failure.\n";
+        $targetOutput = "MethodCaller failure.\n";
 
-        $testOutput = SpecialLibrary::instantiator($testInput->get());
+        $testOutput = SpecialLibrary::methodCaller($testInput->get());
         $this->assertEquals($targetOutput, $testOutput);
     }
 
